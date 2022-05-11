@@ -12,8 +12,159 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
-    
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="navbar__logo">
+            <i class="fab fa-diaspora"></i>
+            <a href="#">YoonSeo</a>
+        </div>
+        <div class="navbar__menu">
+            <ul class="navbar__menu">
+                <li class="navbar__menu__item active">Home</li>
+                <li class="navbar__menu__item">About</li>
+                <li class="navbar__menu__item">Skills</li>
+                <li class="navbar__menu__item">Work</li>
+                <li class="navbar__menu__item">Contact</li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Home -->
+    <section id="home">
+        <img src="" alt="profile photo" class="home__avatar">
+        <h1 id="home__title">
+            Hello, <br/>I'm Dream Coder
+        </h1>
+        <h2 class="home__description">
+            신입 프론트엔드 개발자를 꿈꾸는 노윤서입니다.
+        </h2>
+        <button class="home__contact">Contact Me</button>
+    </section>
+    <!-- About -->
+    <section id="about">
+        <h1>About me</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <div class="about__majors">
+            <div class="major">
+                <div class="major__icons">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="major__title">Front-end</div>
+                <div class="major__description">Lorem ipsum</div>
+            </div>
+            <div class="major">
+                <div class="major__icons">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="major__title">Front-end</div>
+                <div class="major__description">Lorem ipsum</div>
+            </div>
+            <div class="major">
+                <div class="major__icons">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="major__title">Front-end</div>
+                <div class="major__description">Lorem ipsum</div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills -->
+    <section id="skills">
+        <h1>Skills</h1>
+        <h2>Skills & Attributes</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <div class=""skillset>
+            <div class="skillset_left">
+                <h3 class="skillset__title">Skills</h3>
+                <div class="skill">
+                    <div class="skill__description">
+                        <span>HTML</span>
+                        <span>99%</span>
+                    </div>
+                    <div class="skill__bar">
+                        <div class="skill__value"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skillset_right">
+                <div class="tools">
+                    <h3 class="skillset__title">Tools</h3>
+                    <ul class="tools__list">
+                        <li><span>Visual Studio Code</span></li>
+                    </ul>
+                </div>
+                <div class="etc">
+                    <h3 class="skillset__title">Etc</h3>
+                    <ul class="etc__list">
+                        <li><span>Git</span></li>
+                        <li><span>Figma</span></li>
+                        <li><span>Notion</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Work -->
+    <section id="work">
+        <h1>My work</h1>
+        <h3>Projects</h3>
+        <div class="work__projects">
+            <a href="" class="project" target="blank">
+                <img src="" alt="Portfolio">
+            </a>
+            <div class="project__description">
+                <h3>Portfolio Site</h3>
+                <span>HTML, CSS, Javascript를 사용해 포트폴리오 사이트 제작</span>
+            </div>
+            <a href="" class="project" target="blank">
+                <img src="" alt="Portfolio">
+            </a>
+            <div class="project__description">
+                <h3>오늘 뭐 먹지?</h3>
+                <span>HTML, CSS, Javascript를 사용해 포트폴리오 사이트 제작</span>
+            </div>
+            <a href="" class="project" target="blank">
+                <img src="" alt="Portfolio">
+            </a>
+            <div class="project__description">
+                <h3>모멘텀 앱</h3>
+                <span>HTML, CSS, Javascript를 사용해 포트폴리오 사이트 제작</span>
+            </div>
+            <a href="" class="project" target="blank">
+                <img src="" alt="Portfolio">
+            </a>
+            <div class="project__description">
+                <h3>애니케어</h3>
+                <span>HTML, CSS, Javascript를 사용해 포트폴리오 사이트 제작</span>
+            </div>
+            <a href="" class="project" target="blank">
+                <img src="" alt="Portfolio">
+            </a>
+            <div class="project__description">
+                <h3>주정뱅이들</h3>
+                <span>HTML, CSS, Javascript를 사용해 포트폴리오 사이트 제작</span>
+            </div>
+        </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact">
+        <h1 class="contact__title">Contact me</h1>
+        <h2 class="contact__email">yoonseo1997@naver.com</h2>
+        <div class="contact__links">
+            <a href="" target="blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p class="contact__rights">
+            2022 YoonSeoRoh's Portfolio - All rights reserved
+        </p>
+    </section>
 </body>
 </html>
