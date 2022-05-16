@@ -96,12 +96,20 @@ p {
 /*Navbar*/
 
 #navbar{
+    position: fixed; /*항상 제일 위에 고정*/
+    width: 100%;
     display: flex; /*박스 양쪽에 정렬*/
     justify-content: space-between; /*중심축(수평)에서 정렬+간격 주기*/
-    background-color: var(--color-pink);
+    background-color: transparent;
     align-items: center; /*박스들을 수직으로 가운데 정렬*/
     color: var(--color-white);
     padding: 16px;
+    transition: all var(--animation-duration) ease-in-out;
+    z-index: 1; /*다른 레이아웃과 겹쳤을 때 가장 위로*/
+}
+#navbar.navbar--dark{
+    background-color: var(--color-pink);
+    padding: 8px;
 }
 .navbar__menu{
     display: flex;
@@ -137,6 +145,7 @@ p {
     background-color: var(--color-pink);
     text-align: center;
     padding: 40px;
+    padding-top: 120px;
 }
 .home__avatar{
     width: 250px;
@@ -289,7 +298,7 @@ p {
     transform: translateY(0px);
 }
 .project__description h3{
-    color: var(--color-white);
+    color: var(--color-orange);
 }
 .project__description h3:after{
     /*::after와 같이 content가 쓰이는 요소는 기본적으로 inline*/
@@ -298,9 +307,9 @@ p {
     display: block;
     position: relative;
     left: 50%;
-    margin-left: -12px;
+    transform: translateX(-50%);
     margin-top: 8px;
-    width: 25px;
+    width: 50px;
     height: 2px;
     background-color: var(--color-dark-white);
 }
@@ -325,6 +334,26 @@ p {
     color: var(--color-yellow);
 }
 
+/* Scroll */
+.arrow-up{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+    background-color: var(--color-pink);
+    color: var(--color-white);
+    border-radius: 50%;
+    opacity: 0; /*display: none으로 주는 경우 애니메이션이 적용되지 않음*/
+    pointer-events: none; /*보이지 않을 때 클릭되지 않도록*/
+    transition: all var(--animation-duration) ease-in;
+}
+.arrow-up.visible{
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /*For below 768px screen width*/
 /*화면이 768px보다 작을 때*/
 /*미디어쿼리 안에는 최소한의 스타일링, 차이점만 작성*/
@@ -335,11 +364,30 @@ p {
     #navbar{
         flex-direction: column; /*중심축이 수직*/
         align-items: flex-start; /*왼쪽으로 정렬*/
+        background-color: var(--color-pink);
+    }
+    #navbar.navbar--dark{
+        padding: 16px;
+    }
+    .navbar__menu.open{
+        display: block;
     }
     .navbar__menu{
         flex-direction: column;
         text-align: center;
         width: 100%; /*중심으로 오도록 하기 위해*/
         display: none; /*토글 버튼을 클릭할 때만 show*/
+    }
+    .about__majors{
+        flex-direction: column;
+    }
+    .major{
+        margin-bottom: 38px;
+    }
+    .skillset{
+        flex-direction: column;
+    }
+    .project{
+        flex-grow: 1; /*화면에 딱 맞도록 크기를 알아서 키워줌*/
     }
 }
