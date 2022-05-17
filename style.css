@@ -1,6 +1,9 @@
 /*Global*/
 :root{
     /* Color */
+ --color-primary: #ff5851;
+ --color-primary-bg: #221F1F;
+ --color-bg-light: #433E3E;
  --color-white: #ffffff;
  --color-light-white: #eeeeee;
  --color-dark-white: #bdbdbd;
@@ -32,6 +35,7 @@
  /*Annimation*/
  /*애니메이션은 250ms~350ms 정도가 가장 적당*/
  --animation-duration: 300ms;
+ --animation-duration-fast: 100ms;
 }
 
 /*Universal tags*/
@@ -43,7 +47,7 @@
 body{
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    cursor: default; /*컨텐츠 위에서 커서 기본 모양*/
+    cursor: none; /*시스템 커서 숨기기*/
 }
 
 a{
@@ -93,6 +97,26 @@ p {
    margin: 4px 0;
 }
 
+/* Cursor */
+
+.cursor{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    z-index: 1000; 
+    pointer-events: none; /*이벤트 제어*/
+    background-color: var(--color-primary);
+    position: absolute; /*마우스의 움직임을 위해서*/
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+.cursor__grow{
+    transform: scale(1.5);
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    transition: all var(--animation-duration-fast) ease;
+}
+
 /*Navbar*/
 
 #navbar{
@@ -108,7 +132,7 @@ p {
     z-index: 1; /*다른 레이아웃과 겹쳤을 때 가장 위로*/
 }
 #navbar.navbar--dark{
-    background-color: var(--color-pink);
+    background-color: var(--color-primary-bg);
     padding: 8px;
 }
 .navbar__menu{
@@ -122,14 +146,13 @@ p {
 .navbar__menu__item{
     padding: 8px 12px;
     margin: 0 4px;
-    cursor: pointer;
     border-radius: var(--size-border-radius);
-}
-.navbar__menu__item.active{
-    border: 1px solid var(--color-white);
+    border: 1px solid transparent;
 }
 .navbar__menu__item:hover{
-    background-color: var(--color-dark-pink);
+    transform: scale(1.2);
+    background-color: var(--color-bg-light);
+    border-radius: var(--size-border-radius);
 }
 .navbar__toggle-btn{
     position: absolute;
@@ -140,17 +163,38 @@ p {
     display: none;
 }
 
-/*Home*/
-#home{
-    background-color: var(--color-pink);
-    text-align: center;
+/* Introduction */
+#introduction{
+    background-color: var(--color-primary-bg);
     padding: 40px;
     padding-top: 120px;
 }
+.introduction__container{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+.introduction__title{
+    align-items: center;
+    color: var(--color-white);
+    font-weight: 900;
+    font-size: 80px;
+    margin-right: 10px;
+}
+.introduction__description{
+    margin: 10px;
+    color: var(--color-dark-white);
+}
+
+/*Home*/
+#home{
+    background-color: var(--color-primary-bg);
+    text-align: center;
+    padding: 40px;
+}
 .home__avatar{
     width: 250px;
-    height: 250px;
-    border-radius: 50%;
+    height: 300px;
     border: 2px solid var(--color-light-white);
 }
 
@@ -168,6 +212,9 @@ p {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
 }
+.home__contact:hover {
+    background-color: var(--color-orange);
+}
 
 /*Section Common*/
 .section{
@@ -178,6 +225,9 @@ p {
 .section__container{
     max-width: 1200px;
     margin: auto;
+}
+.color__change{
+    color: var(--color-primary);
 }
 
 /*About*/
@@ -318,20 +368,48 @@ p {
 #contact{
     background-color: var(--color-pink);
 }
-.contact__title, .contact__email, .contact__rights{
+.contact__container{
+    display: flex;
+    flex-direction: row;
+}
+.contact__title, .contact__type, .contact__rights{
     color: var(--color-white);
 }
 .contact__title{
-    margin: 32px 0;
+    margin: 20px 0;
 }
-.contact__links{
+.contact__link{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+.contact__link{
+    display: flex;
+    flex-direction: row;
     font-size: var(--font-large);
     margin: 24px 0;
     transition: all var(--animation-duration) ease-in;
 }
-.contact__links i:hover{
+.contact__logo{
+    margin-right: 15px;
+}
+.contact__link i:hover{
     transform: scale(1.1);
     color: var(--color-yellow);
+}
+.contact__sending>form{
+    cursor: none;
+    display: flex;
+    flex-direction: row;
+}
+.contact__send{
+    color: var(--color-white);
+    font-size: var(--font-regular);
+    font-weight: var(--weight-bold);
+    margin: 24px;
+    padding: 8px 12px;
+    border: 2px solid var(--color-white);
+    border-radius: var(--size-border-radius);
 }
 
 /* Scroll */
@@ -342,9 +420,10 @@ p {
     width: 70px;
     height: 70px;
     font-size: 50px;
-    background-color: var(--color-pink);
+    background-color: var(--color-primary-bg);
     color: var(--color-white);
     border-radius: 50%;
+    border: 1px solid var(--color-white);
     opacity: 0; /*display: none으로 주는 경우 애니메이션이 적용되지 않음*/
     pointer-events: none; /*보이지 않을 때 클릭되지 않도록*/
     transition: all var(--animation-duration) ease-in;
@@ -358,13 +437,21 @@ p {
 /*화면이 768px보다 작을 때*/
 /*미디어쿼리 안에는 최소한의 스타일링, 차이점만 작성*/
 @media screen and (max-width: 768px){
+    :root{
+         /* Font size */
+        --font-large: 30px;
+        --font-medium: 18px;
+        --font-regular: 16px;
+        --font-small: 14px;
+        --font-micro: 12px;
+    }
     .navbar__toggle-btn{
         display: block;
     }
     #navbar{
         flex-direction: column; /*중심축이 수직*/
         align-items: flex-start; /*왼쪽으로 정렬*/
-        background-color: var(--color-pink);
+        background-color: var(--color-primary-bg);
     }
     #navbar.navbar--dark{
         padding: 16px;
@@ -372,22 +459,38 @@ p {
     .navbar__menu.open{
         display: block;
     }
+    .section{
+        padding: 16px;
+        padding-top: 40px;
+    }
     .navbar__menu{
         flex-direction: column;
         text-align: center;
         width: 100%; /*중심으로 오도록 하기 위해*/
         display: none; /*토글 버튼을 클릭할 때만 show*/
     }
+    .introduction__title{
+        font-size: var(--font-large);
+    }
     .about__majors{
         flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 0px;
     }
     .major{
-        margin-bottom: 38px;
+        margin-bottom: 30px;
     }
     .skillset{
         flex-direction: column;
     }
     .project{
         flex-grow: 1; /*화면에 딱 맞도록 크기를 알아서 키워줌*/
+    }
+    .arrow-up{
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        bottom: 30px;
+        right: 30px;
     }
 }

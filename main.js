@@ -1,5 +1,10 @@
 "use strict";
 
+//Custom Cursor move
+const mouseCursor = document.querySelector(".cursor");
+window.addEventListener("scroll", cursor);
+window.addEventListener("mousemove", cursor);
+
 //Make navbar transparent when it is on the top
 const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
@@ -27,6 +32,17 @@ navbarMenu.addEventListener("click", (e) => {
   scrollIntoView(link);
 });
 
+//Custom cursor grow when it touches link
+const link = document.querySelectorAll(".navbar__menu__item");
+link.forEach((li) => {
+  li.addEventListener("mouseover", () => {
+    mouseCursor.classList.add("cursor__grow");
+  });
+  li.addEventListener("mouseleave", () => {
+    mouseCursor.classList.remove("cursor__grow");
+  });
+});
+
 //Navbar toggle button for small screen
 const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
 navbarToggleBtn.addEventListener("click", () => {
@@ -40,11 +56,13 @@ homeContactBtn.addEventListener("click", () => {
 });
 
 //Make home slowly face to transparent as the window scrolls down
-const home = document.querySelector(".home__container");
+const home = document.querySelector("#home");
 const homeHeight = home.getBoundingClientRect().height;
-document.addEventListener("scroll", () => {
-  home.style.opacity = 1 - window.scrollY / homeHeight;
-});
+// document.addEventListener("scroll", () => {
+//   console.log("1 " + window.scrollY);
+//   console.log(homeHeight);
+//   home.style.opacity = homeHeight / window.scrollY - 1;
+// });
 
 //Show "arrow up" button when scrolling down
 const arrowUp = document.querySelector(".arrow-up");
@@ -58,9 +76,14 @@ document.addEventListener("scroll", () => {
 
 //Handle click on the "arrow up" button
 arrowUp.addEventListener("click", () => {
-  scrollIntoView("#home");
+  scrollIntoView("#introduction");
 });
 
+//함수 모음
+function cursor(e) {
+  mouseCursor.style.left = e.pageX + "px";
+  mouseCursor.style.top = e.pageY + "px";
+}
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: "smooth" });

@@ -9,6 +9,7 @@
     <meta name="author" content="YoonSeoRoh"> 
     <link rel="icon" type="image.png" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/a6b6fd31e0.js" crossorigin="anonymous"></script>
+    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,10 +17,11 @@
     <script src="main.js" defer></script>
 </head>
 <body>
+    <!-- Cursor -->
+    <div class="cursor"></div>
     <!-- Navbar -->
     <nav id="navbar">
         <div class="navbar__logo">
-            <i class="fab fa-diaspora"></i>
             <a href="#">YoonSeo</a>
         </div>
         <ul class="navbar__menu">
@@ -34,16 +36,31 @@
             <i class="fas fa-bars"></i>
         </button>
     </nav>
+    <!-- Introduction -->
+    <section id="introduction" class="section">
+        <div class="introduction__container">
+            <h1 class="introduction__title">
+                WELCOME<br/>TO<br/>MY PORTFOLIO
+            </h1>
+            <h3 class="introduction__description">
+                Consistent,<br/>Calm,<br/>always challenging.
+            </h3>
+        </div>
+    </section>
     <!-- Home -->
     <section id="home" class="section">
         <div class="home__container">
-            <img src="" alt="profile photo" class="home__avatar">
+            <img src="images/profile1.jpg" alt="profile photo" class="home__avatar">
             <h1 class="home__title">
-                Hello, <br/>I'm Dream Coder
+                Hello, <br/>I'm YoonSeoRoh
             </h1>
-            <h2 class="home__description">
-                신입 프론트엔드 개발자를 꿈꾸는 노윤서입니다.
-            </h2>
+            <h3 class="home__description">
+                안녕하세요. 신입 <span class="color__change">프론트엔드</span> 개발자를 꿈꾸는 노윤서입니다.<br/>
+                캔버스에 그림 그리듯이 원하는 것을 나만의 방식으로 채워나갈 수 있는 <span class="color__change">프론트엔드</span>라는 
+                직업에 매력을 느꼈습니다.<br/>
+                <span class="color__change">도전</span>에 두려워하지 않고 꾸준히 <span class="color__change">성장</span>해나가는 개발자가 될 것입니다.<br/>
+                제 포트폴리오에 오신 걸 환영합니다 :)
+            </h3>
             <button class="home__contact">Contact Me</button>
         </div>
     </section>
@@ -184,11 +201,38 @@
     <!-- Contact -->
     <section id="contact" class="section">
         <h1 class="contact__title">Contact me</h1>
-        <h2 class="contact__email">yoonseo1997@naver.com</h2>
-        <div class="contact__links">
-            <a href="" target="blank">
-                <i class="fab fa-github"></i>
-            </a>
+        <div class="contact__container">
+            <div class="contact__sending">
+                <form
+                action="https://formspree.io/f/mknykkvw"
+                method="POST"
+                >
+                    <label>
+                        Your email:
+                        <input type="email" name="email">
+                    </label>
+                    <label>
+                        Your message:
+                        <textarea name="message"></textarea>
+                    </label>
+                    <!-- your other form fields go here -->
+                    <button type="submit" class="contact__send">Send</button>
+                </form>
+            </div>
+            <div class="contact__links">
+                <div class="contact__link">
+                    <a href="" target="blank">
+                        <i class="fa-solid fa-paper-plane contact__logo"></i>
+                    </a>
+                    <h2 class="contact__type">yoonseo1997@naver.com</h2>
+                </div>
+                <div class="contact__link">
+                    <a href="" target="blank">
+                        <i class="fa-brands fa-github contact__logo"></i>
+                    </a>
+                    <h2 class="contact__type">github</h2>
+                </div>
+            </div>
         </div>
         <p class="contact__rights">
             2022 YoonSeoRoh's Portfolio - All rights reserved
